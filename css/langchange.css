@@ -1,0 +1,35 @@
+ /* === ラジオボタンは非表示 ================== */
+#langChenge input[type="radio"]{
+  display    : none;
+}
+
+ 
+ /* === 各ラジオボタンのラベルをボタンに変更 == */
+#langChenge label{
+  display    : inline-block;
+  border     : 1px solid #ccc;
+  box-shadow : 2px 2px #999;
+  padding    : 2px 6px;
+}
+ 
+ /* === 選択されていない言語は非表示にする ==== */
+#langJa:not(:checked) ~ * *:lang(ja) {
+  display    : none;
+}
+#langEn:not(:checked) ~ * *:lang(en) {
+  display    : none;
+}
+#langZh:not(:checked) ~ * *:lang(zh) {
+  display    : none;
+}
+ 
+ /* === 選択されている言語のラベル色を変更 ==== */
+#langJa:checked ~ label[for="langJa"] {
+  background : #ffa64d;
+}
+#langEn:checked ~ label[for="langEn"] {
+  background : #ffa64d;
+}
+#langZh:checked ~ label[for="langZh"] {
+  background : #ffa64d;
+}

@@ -8,6 +8,7 @@
     <link rel="icon" href="img/favicon.ico">
     <link rel="stylesheet" href="third-party/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/langchange.css">
 </head>
 <body>
     <nav class="navbar navbar-default" role="navigation">
@@ -23,9 +24,27 @@
                     <span class="glyphicon glyphicon-stats"></span>&nbsp;
                     Github Release Stats
                 </a>
-            </div>
+
+                <!--lang selector-->
+                <div id="langChenge">
+                    <input type="radio" name="land" id="langJa">
+                    <input type="radio" name="land" id="langEn" checked>
+                    <label for="langJa">
+                        <span lang="ja">日本語</span>
+                        <span lang="en">日本語</span>
+                    </label>
+                    <label for="langEn">
+                        <span lang="ja">English</span>
+                        <span lang="en">English</span>
+                    </label>
+                <div>
+                
+
             <div class="collapse navbar-collapse" id="main-navbar">
+
+
                 <ul class="nav navbar-nav navbar-right">
+                    
                     <li>
                         <a href="https://github.com/ikameshi-hut/github-release-stats" target="_blank">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;
@@ -52,6 +71,10 @@
             </div>
         </div>
         <div class="row" id="description">
+            
+                <p lang="ja">言語の切り替えはCSSのセレクタを使用します。</p>
+                <p lang="en">Language switching uses CSS selector.</p>
+            
             <h1>...and get the latest release stats like download counts, release dates, authors for any Github project.</h1>
         </div>
         <div class="row" id="title">
@@ -92,6 +115,7 @@
             Made with <span class="glyphicon glyphicon-heart"></span> by <a href="http://somsubhra.com" target="_blank">Somsubhra</a>. Privacy enhanced with <span class="glyphicon glyphicon-heart"></span> by <a href="http://github.com/ikameshi-hut" target="_blank">ikameshi</a>.
         </div>
     </div>
+</div>
 </body>
 <script type="text/javascript" src="third-party/jquery/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="third-party/bootstrap/js/bootstrap.min.js"></script>
