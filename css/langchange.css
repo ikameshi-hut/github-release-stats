@@ -1,11 +1,11 @@
  /* === ラジオボタンは非表示 ================== */
-#langChenge input[type="radio"]{
+#langChange input[type="radio"]{
   display    : none;
 }
 
  
  /* === 各ラジオボタンのラベルをボタンに変更 == */
-#langChenge label{
+#langChange label{
   display    : inline-block;
   border     : 1px solid #ccc;
   box-shadow : 2px 2px #999;
@@ -33,3 +33,4 @@
 #langZh:checked ~ label[for="langZh"] {
   background : #ffa64d;
 }
+

@@ -6,12 +6,14 @@
     <meta name="description" content="Get the latest release stats like download counts, release dates, author on any Github project">
     <meta name="keywords" content="Github, release, download, count, privacy">
     <link rel="icon" href="img/favicon.ico">
-    <!--<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet" type="text/css">-->
     <link rel="stylesheet" href="third-party/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/langchange.css">
 </head>
 <body>
+    <!--Avobe this sentence is the area language can be changed-->
+    <div id="langChange">
+
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -26,19 +28,7 @@
                     Github Release Stats
                 </a>
 
-                <!--lang selector-->
-                <div id="langChenge">
-                    <input type="radio" name="land" id="langJa">
-                    <input type="radio" name="land" id="langEn" checked>
-                    <label for="langJa">
-                        <span lang="ja">日本語</span>
-                        <span lang="en">日本語</span>
-                    </label>
-                    <label for="langEn">
-                        <span lang="ja">English</span>
-                        <span lang="en">English</span>
-                    </label>
-                <div>
+                </div>
                 
 
             <div class="collapse navbar-collapse" id="main-navbar">
@@ -56,27 +46,51 @@
             </div>
         </div>
     </nav>
+
     <div class="container">
+        <!--lang selector-->
+            <input type="radio" name="land" id="langJa">
+            <input type="radio" name="land" id="langEn" checked>
+            <label for="langJa">
+                <span lang="ja">日本語</span>
+                <span lang="en">日本語</span>
+            </label>
+            <label for="langEn">
+                <span lang="ja">English</span>
+                <span lang="en">English</span>
+            </label>
+        <!-- -->
+
         <div class="row" id="search">
             <div class="col-md-4 col-md-offset-4">
-                <h1>Enter project details...</h1>
+                <h1>
+                    <p lang="ja">プロジェクト情報入力</p>  
+                    <p lang="en">Enter project details...</p>
+                </h1>
                 <div class="form form-inline">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="username" placeholder="Github username">
+        
+                            <input type="text" class="form-control" id="username" placeholder="Github username">
+                        
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="repository" placeholder="Repository name">
+                    
+                            <input type="text" class="form-control" id="repository" placeholder="Repository name">
+                        
                     </div>
-                    <button class="btn btn-primary" id="get-stats-button">Get the latest release stats!</button>
+                    <button class="btn btn-primary" id="get-stats-button">
+                        <p lang="ja">リリース情報取得</p>  
+                        <p lang="en">Get the latest release stats!</p>
+                    </button>
                 </div>
             </div>
         </div>
         <div class="row" id="description">
             
-                <p lang="ja">言語の切り替えはCSSのセレクタを使用します。</p>
-                <p lang="en">Language switching uses CSS selector.</p>
-            
-            <h1>...and get the latest release stats like download counts, release dates, authors for any Github project.</h1>
+            <h1>
+                <p lang="ja">青ボタンでダウンロード数、リリース日、作者情報を出力</p>  
+                <p lang="en">...and get the latest release stats like download counts, release dates, authors for any Github project.</p>
+            </h1>
         </div>
         <div class="row" id="title">
             <h1><span class="username"></span>/<span class="repository"></span></h1>
@@ -84,19 +98,6 @@
         </div>
         <div class="row" id="ads">
             <div class="col-md-6 col-md-offset-2">
-                <!--
-                <script type="text/javascript">
-
-                  ( function() {
-                    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-                        var unit = {"calltype":"async[2]","publisher":"somsubhra","width":728,"height":90,"sid":"Chitika Default"};
-                        var placement_id = window.CHITIKA.units.length;
-                        window.CHITIKA.units.push(unit);
-                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                    }());
-                </script>
-                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-            -->
             </div>
         </div>
         <div class="row" id="stats-result">
@@ -104,11 +105,12 @@
         <div class="row">
             <nav id="pagination">
                 <ul class="pager">
-                    <li><a id="get-prev-results-button" href="#">Newer</a></li>
-                    <li><a id="get-next-results-button" href="#">Older</a></li>
+                    <li><a id="get-prev-results-button" href="#"><p lang="ja">前のページ</p><p lang="en">Newer</p></a></li>
+                    <li><a id="get-next-results-button" href="#"><p lang="ja">次のページ</p><p lang="en">Older</p></a></li>
                 </ul>
                 <div id="per-page">
-                    <label class="">Per page</label>
+                    <p lang="ja"></p>
+                    <p lang="en"><label class="">Per page</label></p>
                     <select class="form-control">
                         <option>5</option>
                         <option>10</option>
@@ -117,6 +119,8 @@
                         <option>25</option>
                         <option>30</option>
                     </select>
+                    <p lang="ja"><label class="">件を1ページに表示</label></p>
+                    <p lang="en"></p>
                 </div>
             </nav>
         </div>
@@ -126,7 +130,9 @@
     </div>
     <div id="footer">
         <div class="container">
-            Made with <span class="glyphicon glyphicon-heart"></span> by <a href="http://somsubhra.com" target="_blank">Somsubhra</a>. Privacy enhanced with <span class="glyphicon glyphicon-heart"></span> by <a href="http://github.com/ikameshi-hut" target="_blank">ikameshi</a>.
+            <p lang="ja">まごころ<span class="glyphicon glyphicon-heart"></span>こめて <a href="http://somsubhra.com" target="_blank">Somsubhra</a> が作りました。 まごころ<span class="glyphicon glyphicon-heart"></span>こめて <a href="http://github.com/ikameshi-hut" target="_blank">ikameshi</a> がプライバシーに配慮した版を作り、日本語訳しました。</p>  
+                <p lang="en">Made with <span class="glyphicon glyphicon-heart"></span> by <a href="http://somsubhra.com" target="_blank">Somsubhra</a>. Privacy enhanced and Japanese translated with <span class="glyphicon glyphicon-heart"></span> by <a href="http://github.com/ikameshi-hut" target="_blank">ikameshi</a>.</p>
+            
         </div>
     </div>
 </div>
@@ -135,15 +141,5 @@
 <script type="text/javascript" src="third-party/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="third-party/typahead/bootstrap3-typeahead.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
-<!--
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-58580258-2', 'auto');
-  ga('send', 'pageview');
-</script>
--->
 </html>

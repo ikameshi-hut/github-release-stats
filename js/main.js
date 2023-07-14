@@ -67,17 +67,17 @@ function showStats(data) {
 
     if(data.status == 404) {
         err = true;
-        errMessage = "The project does not exist!";
+        errMessage = "<p lang=\"ja\">そのプロジェクトは存在しません！</p><p lang=\"en\">The project does not exist!</p>";
     }
 
     if(data.status == 403) {
         err = true;
-        errMessage = "You've exceeded GitHub's rate limiting.<br />Please try again in about an hour.";
+        errMessage = "<p lang=\"ja\">GitHubの利用制限を超えました<br />一時間ほど時間をおいて再試行してください</p><p lang=\"en\">You've exceeded GitHub's rate limiting.<br />Please try again in about an hour.</p>";
     }
 
     if(data.length == 0) {
         err = true;
-        errMessage = getQueryVariable("page") > 1 ? "No more releases" : "There are no releases for this project";
+        errMessage = getQueryVariable("page") > 1 ? "<p lang=\"ja\">これ以上リリースはありません<br />\"前のページ\"ボタンを押してください</p><p lang=\"en\">No more releases<br />Press \"Newer\"</p>" : "<p lang=\"ja\">このプロジェクトは何もリリースしていません</p><p lang=\"en\">There are no releases for this project</p>";
     }
 
     var html = "";
@@ -101,10 +101,10 @@ function showStats(data) {
             var publishDate = item.published_at.split("T")[0];
 
             if(isPreRelease) {
-                releaseBadge = "&nbsp;&nbsp;<span class='badge'>Pre-release</span>";
+                releaseBadge = "&nbsp;&nbsp;<span class='badge'><p lang=\"ja\">プレリリース</p> <p lang=\"en\">Pre-release</p></span>";
                 releaseClassNames += " pre-release";
             } else if(isLatestRelease) {
-                releaseBadge = "&nbsp;&nbsp;<span class='badge'>Latest release</span>";
+                releaseBadge = "&nbsp;&nbsp;<span class='badge'><p lang=\"ja\">最新版</p> <p lang=\"en\">Latest release</p></span>";
                 releaseClassNames += " latest-release";
                 isLatestRelease = false;
             }
@@ -112,7 +112,7 @@ function showStats(data) {
             var downloadInfoHTML = "";
             if(releaseAssets.length) {
                 downloadInfoHTML += "<h4><span class='glyphicon glyphicon-download'></span>&nbsp;&nbsp;" +
-                    "Download Info</h4>";
+                    "Download Info/ダウンロード情報</h4>";
 
                 downloadInfoHTML += "<ul>";
 
@@ -121,8 +121,10 @@ function showStats(data) {
                     var lastUpdate = asset.updated_at.split("T")[0];
 
                     downloadInfoHTML += "<li><code>" + asset.name + "</code> (" + assetSize + "&nbsp;MiB) - " +
-                        "downloaded " + formatNumber(asset.download_count) + "&nbsp;times. " +
-                        "Last&nbsp;updated&nbsp;on&nbsp;" + lastUpdate + "</li>";
+                        "<p lang=\"ja\">" + formatNumber(asset.download_count) + "回ダウンロードされました。 " +
+                        "最終更新日は" + lastUpdate + "です。</p>" +
+                        "<p lang=\"en\">downloaded " + formatNumber(asset.download_count) + "&nbsp;times. " +
+                        "Last&nbsp;updated&nbsp;on&nbsp;" + lastUpdate + "</p></li>";
 
                     totalDownloadCount += asset.download_count;
                     releaseDownloadCount += asset.download_count;
@@ -136,21 +138,21 @@ function showStats(data) {
                 releaseBadge + "</h3>" + "<hr class='release-hr'>";
 
             html += "<h4><span class='glyphicon glyphicon-info-sign'></span>&nbsp;&nbsp;" +
-                "Release Info</h4>";
+                "Release Info/リリース情報</h4>";
 
             html += "<ul>";
 
             if (releaseAuthor) {
                 html += "<li><span class='glyphicon glyphicon-user'></span>&nbsp;&nbsp;" +
-                    "Author: <a href='" + releaseAuthor.html_url + "'>@" + releaseAuthor.login  +"</a></li>";
+                    "Author/作者: <a href='" + releaseAuthor.html_url + "'>@" + releaseAuthor.login  +"</a></li>";
             }
 
             html += "<li><span class='glyphicon glyphicon-calendar'></span>&nbsp;&nbsp;" +
-                "Published: " + publishDate + "</li>";
+                "Published/リリース日: " + publishDate + "</li>";
 
             if(releaseDownloadCount) {
                 html += "<li><span class='glyphicon glyphicon-download'></span>&nbsp;&nbsp;" +
-                    "Downloads: " + formatNumber(releaseDownloadCount) + "</li>";
+                    "Downloads/ダウンロード数: " + formatNumber(releaseDownloadCount) + "</li>";
             }
 
             html += "</ul>";
