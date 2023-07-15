@@ -5,7 +5,7 @@
 
  
  /* === 各ラジオボタンのラベルをボタンに変更 == */
-#langChange label{
+#langChange label[class="lang"] {
   display    : inline-block;
   border     : 1px solid #ccc;
   box-shadow : 2px 2px #999;
@@ -19,18 +19,11 @@
 #langEn:not(:checked) ~ * *:lang(en) {
   display    : none;
 }
-#langZh:not(:checked) ~ * *:lang(zh) {
-  display    : none;
-}
  
  /* === 選択されている言語のラベル色を変更 ==== */
 #langJa:checked ~ label[for="langJa"] {
-  background : #ffa64d;
+  background : #4aa4f2;
 }
 #langEn:checked ~ label[for="langEn"] {
-  background : #ffa64d;
+  background : #4aa4f2;
 }
-#langZh:checked ~ label[for="langZh"] {
-  background : #ffa64d;
-}
-

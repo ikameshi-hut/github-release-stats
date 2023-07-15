@@ -37,9 +37,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     
                     <li>
-                        <a href="https://github.com/ikameshi-hut/github-release-stats" target="_blank">
+                        <a href="https://ikameshi-hut.github.io" target="_blank">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;
-                            View project on Github
+                            View my site(JPN)
                         </a>
                     </li>
                 </ul>
@@ -49,15 +49,13 @@
 
     <div class="container">
         <!--lang selector-->
-            <input type="radio" name="land" id="langJa">
-            <input type="radio" name="land" id="langEn" checked>
-            <label for="langJa">
-                <span lang="ja">日本語</span>
-                <span lang="en">日本語</span>
+            <input type="radio" name="lang" id="langJa" onClick="langSet('ja')">
+            <input type="radio" name="lang" id="langEn" onClick="langSet('en')">
+            <label for="langJa" class="lang">
+                日本語
             </label>
-            <label for="langEn">
-                <span lang="ja">English</span>
-                <span lang="en">English</span>
+            <label for="langEn" class="lang">
+                English
             </label>
         <!-- -->
 
@@ -70,17 +68,17 @@
                 <div class="form form-inline">
                     <div class="form-group">
         
-                            <input type="text" class="form-control" id="username" placeholder="Github username">
+                        <input type="text" class="form-control" id="username" placeholder="Github username">
                         
                     </div>
                     <div class="form-group">
-                    
-                            <input type="text" class="form-control" id="repository" placeholder="Repository name">
+
+                        <input type="text" class="form-control" id="repository" placeholder="Repository name">
                         
                     </div>
                     <button class="btn btn-primary" id="get-stats-button">
-                        <p lang="ja">リリース情報取得</p>  
-                        <p lang="en">Get the latest release stats!</p>
+                        <span lang="ja">リリース情報取得</span>  
+                        <span lang="en">Get the latest release stats!</span>
                     </button>
                 </div>
             </div>
@@ -105,12 +103,12 @@
         <div class="row">
             <nav id="pagination">
                 <ul class="pager">
-                    <li><a id="get-prev-results-button" href="#"><p lang="ja">前のページ</p><p lang="en">Newer</p></a></li>
-                    <li><a id="get-next-results-button" href="#"><p lang="ja">次のページ</p><p lang="en">Older</p></a></li>
+                    <li><a id="get-prev-results-button" href="#"><span lang="ja">前のページ</span><span lang="en">Newer</span></a></li>
+                    <li><a id="get-next-results-button" href="#"><span lang="ja">次のページ</span><span lang="en">Older</span></a></li>
                 </ul>
                 <div id="per-page">
-                    <p lang="ja"></p>
-                    <p lang="en"><label class="">Per page</label></p>
+                    <span lang="ja"></span>
+                    <span lang="en"><label class="">Per page</label></span>
                     <select class="form-control">
                         <option>5</option>
                         <option>10</option>
@@ -119,8 +117,8 @@
                         <option>25</option>
                         <option>30</option>
                     </select>
-                    <p lang="ja"><label class="">件を1ページに表示</label></p>
-                    <p lang="en"></p>
+                    <span lang="ja"><label class="">件を1ページに表示</label></span>
+                    <span lang="en"></span>
                 </div>
             </nav>
         </div>
@@ -130,8 +128,9 @@
     </div>
     <div id="footer">
         <div class="container">
-            <p lang="ja">まごころ<span class="glyphicon glyphicon-heart"></span>こめて <a href="http://somsubhra.com" target="_blank">Somsubhra</a> が作りました。 まごころ<span class="glyphicon glyphicon-heart"></span>こめて <a href="http://github.com/ikameshi-hut" target="_blank">ikameshi</a> がプライバシーに配慮した版を作り、日本語訳しました。</p>  
-                <p lang="en">Made with <span class="glyphicon glyphicon-heart"></span> by <a href="http://somsubhra.com" target="_blank">Somsubhra</a>. Privacy enhanced and Japanese translated with <span class="glyphicon glyphicon-heart"></span> by <a href="http://github.com/ikameshi-hut" target="_blank">ikameshi</a>.</p>
+            <span lang="en">Made with <span class="glyphicon glyphicon-heart"></span> by <a href="http://somsubhra.com" target="_blank">Somsubhra</a>. Privacy enhanced and Japanese translated with <span class="glyphicon glyphicon-heart"></span> by <a href="http://github.com/ikameshi-hut" target="_blank">ikameshi</a>.</span>
+            <br />
+            <span lang="ja">まごころ<span class="glyphicon glyphicon-heart"></span>こめて <a href="http://somsubhra.com" target="_blank">Somsubhra</a> が作りました。 まごころ<span class="glyphicon glyphicon-heart"></span>こめて <a href="http://github.com/ikameshi-hut" target="_blank">ikameshi</a> がプライバシーに配慮した版を作り、日本語訳しました。</span>  
             
         </div>
     </div>
@@ -141,5 +140,6 @@
 <script type="text/javascript" src="third-party/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="third-party/typahead/bootstrap3-typeahead.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/langchange.js"></script>
 
 </html>

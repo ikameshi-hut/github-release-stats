@@ -67,17 +67,17 @@ function showStats(data) {
 
     if(data.status == 404) {
         err = true;
-        errMessage = "<p lang=\"ja\">そのプロジェクトは存在しません！</p><p lang=\"en\">The project does not exist!</p>";
+        errMessage = "<span lang=\"ja\">そのプロジェクトは存在しません！</span><span lang=\"en\">The project does not exist!</span>";
     }
 
     if(data.status == 403) {
         err = true;
-        errMessage = "<p lang=\"ja\">GitHubの利用制限を超えました<br />一時間ほど時間をおいて再試行してください</p><p lang=\"en\">You've exceeded GitHub's rate limiting.<br />Please try again in about an hour.</p>";
+        errMessage = "<span lang=\"ja\">GitHubの利用制限を超えました<br />一時間ほど時間をおいて再試行してください</span><span lang=\"en\">You've exceeded GitHub's rate limiting.<br />Please try again in about an hour.</span>";
     }
 
     if(data.length == 0) {
         err = true;
-        errMessage = getQueryVariable("page") > 1 ? "<p lang=\"ja\">これ以上リリースはありません<br />\"前のページ\"ボタンを押してください</p><p lang=\"en\">No more releases<br />Press \"Newer\"</p>" : "<p lang=\"ja\">このプロジェクトは何もリリースしていません</p><p lang=\"en\">There are no releases for this project</p>";
+        errMessage = getQueryVariable("page") > 1 ? "<span lang=\"ja\">これ以上リリースはありません<br />\"前のページ\"ボタンを押してください</span><span lang=\"en\">No more releases<br />Press \"Newer\"</span>" : "<span lang=\"ja\">このプロジェクトは何もリリースしていません</span><span lang=\"en\">There are no releases for this project</span>";
     }
 
     var html = "";
@@ -101,10 +101,10 @@ function showStats(data) {
             var publishDate = item.published_at.split("T")[0];
 
             if(isPreRelease) {
-                releaseBadge = "&nbsp;&nbsp;<span class='badge'><p lang=\"ja\">プレリリース</p> <p lang=\"en\">Pre-release</p></span>";
+                releaseBadge = "&nbsp;&nbsp;<span class='badge'><span lang=\"ja\">プレリリース</span><span lang=\"en\">Pre-release</span></span>";
                 releaseClassNames += " pre-release";
             } else if(isLatestRelease) {
-                releaseBadge = "&nbsp;&nbsp;<span class='badge'><p lang=\"ja\">最新版</p> <p lang=\"en\">Latest release</p></span>";
+                releaseBadge = "&nbsp;&nbsp;<span class='badge'><span lang=\"ja\">最新版</span><span lang=\"en\">Latest release</span></span>";
                 releaseClassNames += " latest-release";
                 isLatestRelease = false;
             }
@@ -112,7 +112,7 @@ function showStats(data) {
             var downloadInfoHTML = "";
             if(releaseAssets.length) {
                 downloadInfoHTML += "<h4><span class='glyphicon glyphicon-download'></span>&nbsp;&nbsp;" +
-                    "Download Info/ダウンロード情報</h4>";
+                    "<span lang=\"ja\">ダウンロード情報</span><span lang=\"en\">Download Info</span></h4>";
 
                 downloadInfoHTML += "<ul>";
 
@@ -121,10 +121,10 @@ function showStats(data) {
                     var lastUpdate = asset.updated_at.split("T")[0];
 
                     downloadInfoHTML += "<li><code>" + asset.name + "</code> (" + assetSize + "&nbsp;MiB) - " +
-                        "<p lang=\"ja\">" + formatNumber(asset.download_count) + "回ダウンロードされました。 " +
-                        "最終更新日は" + lastUpdate + "です。</p>" +
-                        "<p lang=\"en\">downloaded " + formatNumber(asset.download_count) + "&nbsp;times. " +
-                        "Last&nbsp;updated&nbsp;on&nbsp;" + lastUpdate + "</p></li>";
+                        "<span lang=\"ja\">" + formatNumber(asset.download_count) + "回ダウンロードされました。 " +
+                        "最終更新日は" + lastUpdate + "です。</span>" +
+                        "<span lang=\"en\">downloaded " + formatNumber(asset.download_count) + "&nbsp;times. " +
+                        "Last&nbsp;updated&nbsp;on&nbsp;" + lastUpdate + "</span></li>";
 
                     totalDownloadCount += asset.download_count;
                     releaseDownloadCount += asset.download_count;
@@ -138,21 +138,21 @@ function showStats(data) {
                 releaseBadge + "</h3>" + "<hr class='release-hr'>";
 
             html += "<h4><span class='glyphicon glyphicon-info-sign'></span>&nbsp;&nbsp;" +
-                "Release Info/リリース情報</h4>";
+                "<span lang=\"ja\">リリース情報</span><span lang=\"en\">Release Info</span></h4>";
 
             html += "<ul>";
 
             if (releaseAuthor) {
                 html += "<li><span class='glyphicon glyphicon-user'></span>&nbsp;&nbsp;" +
-                    "Author/作者: <a href='" + releaseAuthor.html_url + "'>@" + releaseAuthor.login  +"</a></li>";
+                    "<span lang=\"ja\">作者</span><span lang=\"en\">Author</span>: <a href='" + releaseAuthor.html_url + "'>@" + releaseAuthor.login  +"</a></li>";
             }
 
             html += "<li><span class='glyphicon glyphicon-calendar'></span>&nbsp;&nbsp;" +
-                "Published/リリース日: " + publishDate + "</li>";
+                "<span lang=\"ja\">リリース日</span><span lang=\"en\">Published</span>: " + publishDate + "</li>";
 
             if(releaseDownloadCount) {
                 html += "<li><span class='glyphicon glyphicon-download'></span>&nbsp;&nbsp;" +
-                    "Downloads/ダウンロード数: " + formatNumber(releaseDownloadCount) + "</li>";
+                    "<span lang=\"ja\">ダウンロード数</span><span lang=\"en\">Downloads</span>: " + formatNumber(releaseDownloadCount) + "</li>";
             }
 
             html += "</ul>";
@@ -164,7 +164,7 @@ function showStats(data) {
 
         if(totalDownloadCount) {
             var totalHTML = "<div class='row total-downloads'>";
-            totalHTML += "<h1><span class='glyphicon glyphicon-download'></span>&nbsp;&nbsp;Total Downloads</h1>";
+            totalHTML += "<h1><span class='glyphicon glyphicon-download'></span>&nbsp;&nbsp;<span lang=\"ja\">合計ダウンロード数</span><span lang=\"en\">Total Downloads</span></h1>";
             totalHTML += "<span>" + formatNumber(totalDownloadCount) + "</span>";
             totalHTML += "</div>";
 
@@ -192,11 +192,12 @@ function getStats(page, perPage) {
 }
 
 // Redirection function
-function redirect(page, perPage) {
+function redirect(page, perPage, lang) {
     window.location = "?username=" + $("#username").val() +
         "&repository=" + $("#repository").val() +
         "&page=" + page + "&per_page=" + perPage +
-        ((getQueryVariable("search") == "0") ? "&search=0" : "");
+        ((getQueryVariable("search") == "0") ? "&search=0" : "") +
+        "&lang=" + lang;
 }
 
 // The main function
@@ -209,20 +210,22 @@ $(function() {
     $("#username").change(getUserRepos);
 
     $("#get-stats-button").click(function() {
-        redirect(page, perPage);
+        // When get stats button clicked, return to page 1
+        page = 1;
+        redirect(page, perPage, lang);
     });
 
     $("#get-prev-results-button").click(function() {
-        redirect(page > 1 ? --page : 1, perPage);
+        redirect(page > 1 ? --page : 1, perPage, lang);
     });
 
     $("#get-next-results-button").click(function() {
-        redirect(++page, perPage);
+        redirect(++page, perPage, lang);
     });
 
     $("#per-page select").on('change', function() {
         if(username == "" && repository == "") return;
-        redirect(page, this.value);
+        redirect(page, this.value, lang);
     });
 
     var username = getQueryVariable("username");
@@ -230,6 +233,7 @@ $(function() {
     var showSearch = getQueryVariable("search");
     var page = getQueryVariable("page") || 1;
     var perPage = getQueryVariable("per_page") || 5;
+    langSet(getQueryVariable("lang"));  // Set lang from query
 
     if(username != "" && repository != "") {
         $("#username").val(username);
